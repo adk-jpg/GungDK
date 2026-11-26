@@ -22,6 +22,20 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   )
 }
 
+// adk logo, traced from the original PNG (1280×1280 canvas)
+function AdkLogo({ className }: { className?: string }) {
+  return (
+    <svg viewBox="167 113 880 957" className={className} role="img" aria-label="adk">
+      <g stroke="#000" strokeWidth={5} strokeLinejoin="round">
+        <polygon points="442,123 755,123 897,593 765,593 658,244 527,244 295,1057 177,1057" fill="#ffaa00" />
+        <polygon points="503,658 917,658 1024,1018 893,1018 813,747 477,747" fill="#ffaa00" />
+        <polygon points="893,1018 1024,1018 1037,1060 905,1060" fill="#ff0000" />
+        <line x1="813" y1="747" x2="917" y2="658" />
+      </g>
+    </svg>
+  )
+}
+
 export function Component() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -332,9 +346,8 @@ export function Component() {
                     transition={{ type: "spring", duration: 0.8 }}
                     className="mx-auto w-10 h-10 rounded-full border border-white/10 flex items-center justify-center relative overflow-hidden"
                   >
-                    {/* Logo placeholder - would be an SVG in practice */}
-                    {/* <!-- SVG_LOGO --> */}
-                    <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">S</span>
+                    {/* Logo */}
+                    <AdkLogo className="relative w-6 h-6" />
 
                     {/* Inner lighting effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
