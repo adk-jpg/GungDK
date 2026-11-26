@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Mail, Lock,Eye,EyeClosed, ArrowRight } from 'lucide-react';
+import { User, Lock,Eye,EyeClosed, ArrowRight } from 'lucide-react';
 
 import { cn } from "@/lib/utils"
 
@@ -38,10 +38,10 @@ function AdkLogo({ className }: { className?: string }) {
 
 export function Component() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [focusedInput, setFocusedInput] = useState<"email" | "password" | null>(null);
+  const [focusedInput, setFocusedInput] = useState<"username" | "password" | null>(null);
   const [rememberMe, setRememberMe] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -375,9 +375,9 @@ export function Component() {
                 {/* Login form */}
                 <form onSubmit={(e) => { e.preventDefault(); setIsLoading(true); setTimeout(() => setIsLoading(false), 2000); }} className="space-y-4">
                   <motion.div className="space-y-3">
-                    {/* Email input */}
+                    {/* Username input */}
                     <motion.div
-                      className={`relative ${focusedInput === "email" ? 'z-10' : ''}`}
+                      className={`relative ${focusedInput === "username" ? 'z-10' : ''}`}
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -385,22 +385,23 @@ export function Component() {
                       <div className="absolute -inset-[0.5px] bg-gradient-to-r from-white/10 via-white/5 to-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
                       <div className="relative flex items-center overflow-hidden rounded-lg">
-                        <Mail className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
-                          focusedInput === "email" ? 'text-white' : 'text-white/40'
+                        <User className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
+                          focusedInput === "username" ? 'text-white' : 'text-white/40'
                         }`} />
 
                         <Input
-                          type="email"
-                          placeholder="Email address"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          onFocus={() => setFocusedInput("email")}
+                          type="text"
+                          autoComplete="username"
+                          placeholder="Username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          onFocus={() => setFocusedInput("username")}
                           onBlur={() => setFocusedInput(null)}
                           className="w-full bg-white/5 border-transparent focus:border-white/20 text-white placeholder:text-white/30 h-10 transition-all duration-300 pl-10 pr-3 focus:bg-white/10"
                         />
 
                         {/* Input highlight effect */}
-                        {focusedInput === "email" && (
+                        {focusedInput === "username" && (
                           <motion.div
                             layoutId="input-highlight"
                             className="absolute inset-0 bg-white/5 -z-10"
